@@ -16,7 +16,7 @@ const UserPlaceholder = ({ setUserData, userData }) => {
       }
     };
     fetchData();
-  }, [id]);
+  }, [id, setUserData]);
 
   return <div>{userData?.username}</div>;
 };

@@ -58,7 +58,7 @@ const EditProfile = ({ setOpen }) => {
         });
       }
     );
-  }, []);
+  }, [currentUser._id, dispatch]);
 
   useEffect(() => {
     img && uploadImg(img);
