@@ -2,7 +2,7 @@ import Express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
-
+import cors from "cors";
 import userRoutes from "./routes/users.js";
 import authRoutes from "./routes/auths.js";
 import tweetRoutes from "./routes/tweets.js";
@@ -10,6 +10,10 @@ import tweetRoutes from "./routes/tweets.js";
 const app = Express();
 dotenv.config();
 
+// Enable CORS for all routes
+app.use(
+  cors({ origin: "https://main--twitter-clone.netlify.app", credentials: true })
+);
 
 const connect = () => {
   mongoose.set("strictQuery", false);
