@@ -10,15 +10,6 @@ import tweetRoutes from "./routes/tweets.js";
 const app = Express();
 dotenv.config();
 
-const cors = require("cors");
-// Enable CORS for all routes
-app.use(
-  cors({
-    credentials: true,
-    origin:
-      "https://main--ricky-syme-e-portfolio.netlify.app",
-  })
-);
 
 const connect = () => {
   mongoose.set("strictQuery", false);
