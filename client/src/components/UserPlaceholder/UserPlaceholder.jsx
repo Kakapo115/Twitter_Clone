@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const UserPlaceholder = ({ setUserData, userData }) => {
   const { id } = useParams();
-  const location = useLocation().pathname;
+  //const location = useLocation().pathname;
 
   useEffect(() => {
     const fetchData = async () => {

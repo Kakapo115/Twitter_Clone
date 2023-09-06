@@ -32,7 +32,8 @@ const Tweet = ({ tweet, setData }) => {
     e.preventDefault();
 
     try {
-      const like = await axios.put(`/tweets/${tweet._id}/like`, {
+      // Like Tweet
+      await axios.put(`/tweets/${tweet._id}/like`, {
         id: currentUser._id,
       });
 

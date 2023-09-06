@@ -46,6 +46,7 @@ const EditProfile = ({ setOpen }) => {
         // Upload completed successfully, now we can get the download URL
         getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
           try {
+            // Upload Image
             await axios.put(`/users/${currentUser._id}`, {
               profilePicture: downloadURL,
             });
@@ -64,6 +65,7 @@ const EditProfile = ({ setOpen }) => {
   }, [img, uploadImg]);
 
   const handleDelete = async () => {
+    // DeleteTweet
     await axios.delete(`/users/${currentUser._id}`);
     dispatch(logout());
   };
