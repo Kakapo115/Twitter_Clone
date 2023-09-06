@@ -6,8 +6,12 @@ import Explore from "./pages/Explore/Explore.jsx";
 import Signin from "./pages/SignIn/SignIn.jsx";
 import Navbar from "./components/Navbar/Navbar";
 import Error from "./pages/Error/Error";
+import axios from "axios";
 
 const Layout = () => {
+  axios.defaults.baseURL = "https://mern-e-portfolio.onrender.com";
+  axios.defaults.withCredentials = true;
+
   return (
     <div className="md:w-8/12 mx-auto">
       <Navbar />
@@ -19,7 +23,7 @@ const Layout = () => {
 const router = createBrowserRouter([
   {
     path: "/",
-    errorElement: <Error/>,
+    errorElement: <Error />,
     element: <Layout />,
     children: [
       {
