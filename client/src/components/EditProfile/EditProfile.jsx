@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   getStorage,
   ref,
@@ -17,7 +17,7 @@ const EditProfile = ({ setOpen }) => {
   const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  const uploadImg = (file) => {
+  const uploadImg = useCallback((file) => {
     const storage = getStorage(app);
     const fileName = new Date().getTime() + file.name;
     const storageRef = ref(storage, fileName);
@@ -46,7 +46,7 @@ const EditProfile = ({ setOpen }) => {
         // Upload completed successfully, now we can get the download URL
         getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
           try {
-            const updateProfile = await axios.put(`/users/${currentUser._id}`, {
+            await axios.put(`/users/${currentUser._id}`, {
               profilePicture: downloadURL,
             });
           } catch (err) {
@@ -57,14 +57,14 @@ const EditProfile = ({ setOpen }) => {
         });
       }
     );
-  };
+  }, []);
 
   useEffect(() => {
     img && uploadImg(img);
-  }, [img]);
+  }, [img, uploadImg]);
 
   const handleDelete = async () => {
-    const deleteProfile = await axios.delete(`/users/${currentUser._id}`);
+    await axios.delete(`/users/${currentUser._id}`);
     dispatch(logout());
   };
 
