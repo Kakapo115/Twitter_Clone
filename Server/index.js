@@ -12,7 +12,7 @@ dotenv.config();
 
 // Enable CORS for all routes
 app.use(
-  cors({ origin: "https://master--ricky-syme-twitter-clone.netlify.app/", credentials: true })
+  cors({ origin: "https://master--ricky-syme-twitter-clone.netlify.app", credentials: true })
 );
 
 const connect = () => {
