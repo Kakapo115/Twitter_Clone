@@ -9,7 +9,7 @@ import Error from "./pages/Error/Error";
 import axios from "axios";
 
 const Layout = () => {
-  axios.defaults.baseURL = "https://twitter-clone-6p09.onrender.com";
+  axios.defaults.baseURL = "https://twitter-clone-6p09.onrender.com/api";
   axios.defaults.withCredentials = true;
 
   return (
